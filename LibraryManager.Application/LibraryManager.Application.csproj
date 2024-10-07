@@ -9,9 +9,8 @@
   <ItemGroup>
     <Folder Include="Commands\BookCommands\" />
     <Folder Include="Commands\LoanCommands\" />
-    <Folder Include="Queries\BookQuery\" />
+    <Folder Include="Queries\BookQuery\GetBookById\" />
     <Folder Include="Queries\LoanQuery\" />
-    <Folder Include="Queries\UserQuery\GetUserDetailsById\" />
   </ItemGroup>
 
   <ItemGroup>

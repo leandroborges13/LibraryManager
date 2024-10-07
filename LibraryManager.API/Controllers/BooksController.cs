@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryManager.Application.Queries.BookQuery;
+using LibraryManager.Application.Queries.UserQuery.GetAllUser;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.API.Controllers
 {
@@ -6,11 +9,22 @@ namespace LibraryManager.API.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get(string search = "")
+        private readonly IMediator _mediator;
+        public BooksController(IMediator mediator)
         {
-            var result = "";
+            _mediator = mediator;
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll(string search = "")
+        {
+            var query = new GetAllBookQuery();
+            var result = await _mediator.Send(query);
+
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
             return Ok(result);
         }
 

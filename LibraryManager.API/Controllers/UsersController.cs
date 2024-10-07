@@ -2,6 +2,7 @@
 using LibraryManager.Application.Commands.UserCommands.UpdateUser;
 using LibraryManager.Application.Queries.UserQuery.GetAllUser;
 using LibraryManager.Application.Queries.UserQuery.GetUserById;
+using LibraryManager.Application.Queries.UserQuery.GetUserDetailsById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -60,10 +61,15 @@ namespace LibraryManager.API.Controllers
         }
 
         [HttpGet("{id}/details")]
-        public IActionResult GetDetailsById(int id)
+        public async Task<IActionResult> GetDetailsById(int id)
         {
-            var result = "";
+            var query = new GetUserDetailsByIdQuery(id);
+            var result = await _mediator.Send(query);
 
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
             return Ok(result);
         }
     }
