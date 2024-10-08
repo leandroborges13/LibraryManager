@@ -1,4 +1,6 @@
-﻿using LibraryManager.Application.Queries.BookQuery;
+﻿using LibraryManager.Application.Commands.BookCommands.DeleteBook;
+using LibraryManager.Application.Queries.BookQuery;
+using LibraryManager.Application.Queries.BookQuery.GetBookById;
 using LibraryManager.Application.Queries.UserQuery.GetAllUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,19 +31,30 @@ namespace LibraryManager.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var result = "";
+            var query = new GetBookByIdQuery(id);
+            var result = await _mediator.Send(query);
 
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
             return Ok(result);
+        
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var result = "";
+            var cmd = new DeleteBookCommand(id);
+            var result = await _mediator.Send(cmd);
 
-            return NoContent();
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
         }
 
         [HttpPost]
