@@ -1,9 +1,12 @@
 ﻿using LibraryManager.Application.Commands.BookCommands.DeleteBook;
+using LibraryManager.Application.Commands.BookCommands.InsertBook;
+using LibraryManager.Application.Commands.BookCommands.UpdateBook;
 using LibraryManager.Application.Queries.BookQuery;
 using LibraryManager.Application.Queries.BookQuery.GetBookById;
 using LibraryManager.Application.Queries.UserQuery.GetAllUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LibraryManager.API.Controllers
 {
@@ -58,17 +61,17 @@ namespace LibraryManager.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public async Task<IActionResult> Post(InsertBookCommand command)
         {
-            var result = "";
+            var result = await _mediator.Send(command);
 
-            return Ok(result);
+            return NoContent();
         }
 
         [HttpPut]
-        public IActionResult Put()
+        public async Task<IActionResult> Put(UpdateBookCommand command)
         {
-            var result = "";
+            var result = await _mediator.Send(command);
 
             return NoContent();
         }
