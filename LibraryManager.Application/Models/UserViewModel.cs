@@ -4,19 +4,19 @@ namespace LibraryManager.Application.Models
 {
     public class UserViewModel
     {
-        public UserViewModel(string fullName, string email, List<Loan> listLoan)
+        public UserViewModel(string fullName, string email)
         {
             FullName = fullName;
             Email = email;
-            ListLoan = listLoan;
+            ListLoan = [];
 
         }
 
         public string FullName { get; private set; }
         public string Email { get; private set; }
-        public List<Loan> ListLoan { get; private set; }
+        public List<LoanItemViewModel> ListLoan { get; private set; }
 
-        public static UserViewModel FromEntity(User user) => new(user.Name, user.Email, user.ListBookLoan);
+        public static UserViewModel FromEntity(User user) => new(user.Name, user.Email);
         
     }
 }

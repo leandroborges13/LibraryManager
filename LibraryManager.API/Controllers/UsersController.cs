@@ -5,7 +5,7 @@ using LibraryManager.Application.Queries.UserQuery.GetUserById;
 using LibraryManager.Application.Queries.UserQuery.GetUserDetailsById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace LibraryManager.API.Controllers
 {
@@ -52,19 +52,6 @@ namespace LibraryManager.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(new GetUserByIdQuery(id));
-
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result.Message);
-            }
-            return Ok(result);
-        }
-
-        [HttpGet("{id}/details")]
-        public async Task<IActionResult> GetDetailsById(int id)
-        {
-            var query = new GetUserDetailsByIdQuery(id);
-            var result = await _mediator.Send(query);
 
             if (!result.IsSuccess)
             {

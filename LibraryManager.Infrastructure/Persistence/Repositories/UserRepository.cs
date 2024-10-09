@@ -1,11 +1,6 @@
 ﻿using LibraryManager.Core.Entities;
 using LibraryManager.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManager.Infrastructure.Persistence.Repositories
 {
@@ -44,7 +39,6 @@ namespace LibraryManager.Infrastructure.Persistence.Repositories
         public async Task<User?> GetDetailsById(int id)
         {
             var users = await _context.Users
-                .Include(p => p.ListBookLoan)
                 .SingleOrDefaultAsync(p => p.Id == id);
 
             return users;

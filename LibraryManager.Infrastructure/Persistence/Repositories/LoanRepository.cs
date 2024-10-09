@@ -33,6 +33,8 @@ namespace LibraryManager.Infrastructure.Persistence.Repositories
         public async Task<List<Loan>> GetAll()
         {
             return await _context.Loans
+                .Include(p => p.Book)
+                .Include(p => p.User)
                .Where(p => !p.IsDeleted).ToListAsync();
         }
 

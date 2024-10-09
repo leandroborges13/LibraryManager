@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryManager.Application.Commands.LoanCommands.InsertLoan;
+using LibraryManager.Application.Commands.LoanCommands.ReturnLoan;
+using LibraryManager.Application.Queries.LoanQuery;
+using LibraryManager.Application.Queries.UserQuery.GetAllUser;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.API.Controllers
 {
@@ -6,18 +11,39 @@ namespace LibraryManager.API.Controllers
     [ApiController]
     public class LoansController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Post()
+        private readonly IMediator _mediator;
+        public LoansController(IMediator mediator)
         {
-            var result = "";
+            _mediator = mediator;
+        }
 
-            return Ok(result);
+        [HttpPost]
+        public async Task<IActionResult> Post(InsertLoanCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            return NoContent();
         }
 
         [HttpPut("{id}/return")]
-        public IActionResult Return(int id)
+        public async Task<IActionResult> Return(ReturnLoanCommand command)
         {
+            var result = await _mediator.Send(command);
+
             return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllLoanQuery();
+            var result = await _mediator.Send(query);
+
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
         }
 
     }

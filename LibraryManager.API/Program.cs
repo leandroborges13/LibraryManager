@@ -1,6 +1,5 @@
 using LibraryManager.Application;
 using LibraryManager.Infrastructure;
-using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 

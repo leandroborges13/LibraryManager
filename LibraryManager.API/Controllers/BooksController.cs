@@ -3,10 +3,8 @@ using LibraryManager.Application.Commands.BookCommands.InsertBook;
 using LibraryManager.Application.Commands.BookCommands.UpdateBook;
 using LibraryManager.Application.Queries.BookQuery;
 using LibraryManager.Application.Queries.BookQuery.GetBookById;
-using LibraryManager.Application.Queries.UserQuery.GetAllUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LibraryManager.API.Controllers
 {

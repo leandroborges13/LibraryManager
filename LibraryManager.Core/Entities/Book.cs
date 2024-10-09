@@ -20,6 +20,7 @@ namespace LibraryManager.Core.Entities
             Author = author;
             PublisherDate = publisher;
             ISBN = isbn;
+            //ListBookLoan = [];
 
         }
 
@@ -27,6 +28,8 @@ namespace LibraryManager.Core.Entities
         public string Author { get; private set; }
         public string ISBN { get; private set; }
         public DateTime PublisherDate { get; private set; }
+
+        //public List<Loan> ListBookLoan { get; private set; }
 
         public void Update(string titulo, string author, string isbn, DateTime publisherDate)
         {

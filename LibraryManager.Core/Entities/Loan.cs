@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,17 @@ namespace LibraryManager.Core.Entities
         public int IdBook { get; private set; }
         public DateTime StartedAt { get; private set; }
         public int DaysLoan { get; private set; }
+
         public DateTime? FinishedAt { get; private set; }
-        public User User { get; private set; }
-        public Book Book { get; private set; }
+        [ForeignKey(nameof(IdUser))]
+        public virtual User User { get; private set; }
+        [ForeignKey(nameof(IdBook))]
+        public virtual Book Book { get; set; }
+
+        public void Return(DateTime? finishedAt)
+        {
+            FinishedAt = finishedAt;
+        }
 
     }
 }
