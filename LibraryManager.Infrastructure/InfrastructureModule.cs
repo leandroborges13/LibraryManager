@@ -1,4 +1,6 @@
 ﻿using LibraryManager.Core.Repositories;
+using LibraryManager.Core.Services;
+using LibraryManager.Infrastructure.Auth;
 using LibraryManager.Infrastructure.Persistence;
 using LibraryManager.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +31,7 @@ namespace LibraryManager.Infrastructure
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ILoanRepository, LoanRepository>();
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
     }

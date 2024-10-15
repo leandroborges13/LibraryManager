@@ -16,18 +16,6 @@ namespace LibraryManager.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Book>(e => {
-
-                e.HasKey(s => s.Id);
-
-            });
-
-            builder
-              .Entity<User>(e =>
-              {
-                  e.HasKey(u => u.Id);
-              });
-
             builder.Entity<Loan>(e => {
 
                 e.HasKey(s => s.Id);
@@ -43,6 +31,20 @@ namespace LibraryManager.Infrastructure.Persistence
                  .OnDelete(DeleteBehavior.Restrict);
 
             });
+
+            builder.Entity<Book>(e => {
+
+                e.HasKey(s => s.Id);
+
+            });
+
+            builder
+              .Entity<User>(e =>
+              {
+                  e.HasKey(u => u.Id);
+              });
+
+            
 
             base.OnModelCreating(builder);
 

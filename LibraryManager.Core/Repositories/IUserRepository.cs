@@ -15,5 +15,6 @@ namespace LibraryManager.Core.Repositories
         Task<int> Add(User user);
         Task Update(User user);
         Task<bool> Exists(int id);
+        Task<User> GetByEmailAndPasswordAsync(string email, string passwordHash);
     }
 }

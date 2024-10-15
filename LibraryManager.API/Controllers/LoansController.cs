@@ -3,12 +3,14 @@ using LibraryManager.Application.Commands.LoanCommands.ReturnLoan;
 using LibraryManager.Application.Queries.LoanQuery;
 using LibraryManager.Application.Queries.UserQuery.GetAllUser;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.API.Controllers
 {
     [Route("api/loan")]
     [ApiController]
+    [Authorize]
     public class LoansController : ControllerBase
     {
         private readonly IMediator _mediator;
