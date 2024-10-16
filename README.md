@@ -6,3 +6,4 @@ CQRS
 Padrão Repository
 Entity Framework (SQL Server)
 Fluent Validation
+Authentication JWT
