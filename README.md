@@ -1,4 +1,5 @@
-🩸 Gerenciamento de Biblioteca API
+Gerenciamento de Biblioteca API <br/>
+
 🚀 Sobre o Projeto
 Este projeto é uma Web API desenvolvida para gerenciar uma biblioteca. 
 A API oferece diversas funcionalidades essenciais para o controle de livros, usuário e empréstimos, implementando operações básicas e seguindo o padrão API RESTful. 
