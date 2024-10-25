@@ -6,17 +6,17 @@ A API oferece diversas funcionalidades essenciais para o controle de livros, usu
 Além disso, a aplicação foi estruturada com Arquitetura Limpa para garantir melhor organização e manutenção do código.
 
 🛠️ Funcionalidades
-> Cadastro e consulta de livros
-> Cadastro e consulta de usuário
-> Cadastro e consulta de empréstimos
+> Cadastro e consulta de livros <br/>
+> Cadastro e consulta de usuário <br/>
+> Cadastro e consulta de empréstimos <br/>
 
-🧰 Tecnologias Utilizadas
-⚙️ ASP.NET Core 8.0 — Framework para desenvolvimento da API
-📜 Swagger — Ferramenta de documentação interativa
-📝 Padrão CQRS
-🗂️ Padrão Repository
-✅ Validação com Fluent Validation
-📝 Autenticação JWT
+🧰 Tecnologias Utilizadas <br/>
+⚙️ ASP.NET Core 8.0 — Framework para desenvolvimento da API <br/>
+📜 Swagger — Ferramenta de documentação interativa <br/>
+📝 Padrão CQRS <br/>
+🗂️ Padrão Repository <br/>
+✅ Validação com Fluent Validation <br/>
+📝 Autenticação JWT <br/>
 
 🔧 Instalação
 1 - Clone o repositório:
